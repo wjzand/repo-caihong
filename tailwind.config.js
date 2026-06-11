@@ -154,6 +154,11 @@ export default {
         "fade-in-up-delay-2": "fade-in-up 0.7s ease-out 0.2s both",
         "fade-in-up-delay-3": "fade-in-up 0.7s ease-out 0.3s both",
         rainbow: "rainbow 6s linear infinite",
+        "box-shake": "shake 0.6s cubic-bezier(.36,.07,.19,.97) both",
+        "box-open": "box-open 0.8s ease-out forwards",
+        "lid-flip": "lid-flip 0.6s ease-in 0.3s forwards",
+        "card-fly": "card-fly 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both",
+        "rainbow-shine": "rainbow-shine 3s ease infinite",
       },
       keyframes: {
         float: {
@@ -213,6 +218,26 @@ export default {
         rainbow: {
           "0%": { filter: "hue-rotate(0deg)" },
           "100%": { filter: "hue-rotate(360deg)" },
+        },
+        "box-open": {
+          "0%": { transform: "translateY(0) scale(1)" },
+          "30%": { transform: "translateY(-20px) scale(1.05)" },
+          "60%": { transform: "translateY(-10px) scale(1.1)" },
+          "100%": { transform: "translateY(0) scale(1.15)" },
+        },
+        "lid-flip": {
+          "0%": { transform: "translateY(0) rotateX(0deg)" },
+          "100%": { transform: "translateY(-60px) rotateX(-120deg)" },
+        },
+        "card-fly": {
+          "0%": { transform: "translateY(0) scale(0.3)", opacity: "0" },
+          "50%": { transform: "translateY(-80px) scale(0.8)", opacity: "1" },
+          "100%": { transform: "translateY(0) scale(1)", opacity: "1" },
+        },
+        "rainbow-shine": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
         },
       },
     },

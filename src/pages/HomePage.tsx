@@ -3,6 +3,7 @@ import { PageContainer } from '@/components/layout/PageContainer'
 import { TargetSelector } from '@/components/praise/TargetSelector'
 import { StyleSelector } from '@/components/praise/StyleSelector'
 import { PraiseCard } from '@/components/praise/PraiseCard'
+import { MysteryBoxEntry } from '@/components/mystery/MysteryBoxEntry'
 import { Button } from '@/components/ui/Button'
 import { useAppStore } from '@/store'
 import { generatePraise } from '@/utils/generator'
@@ -109,6 +110,8 @@ export default function HomePage() {
             <span className="text-gray-400 group-hover:translate-x-1 transition-transform">→</span>
           </div>
         </div>
+
+        <MysteryBoxEntry />
 
         <div className="grid grid-cols-2 gap-3">
           <button

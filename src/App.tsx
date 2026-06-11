@@ -6,6 +6,7 @@ import PosterPage from "@/pages/PosterPage";
 import DailyPage from "@/pages/DailyPage";
 import BattlePage from "@/pages/BattlePage";
 import MinePage from "@/pages/MinePage";
+import MysteryBoxPage from "@/pages/MysteryBoxPage";
 import { useAppStore } from "@/store";
 
 function ScrollToTop() {
@@ -42,6 +43,7 @@ export default function App() {
         <Route path="/daily" element={<DailyPage />} />
         <Route path="/battle" element={<BattlePage />} />
         <Route path="/mine" element={<MinePage />} />
+        <Route path="/mystery" element={<MysteryBoxPage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
     </Router>

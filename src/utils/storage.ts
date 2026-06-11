@@ -1,10 +1,11 @@
-import { FavoriteItem, HistoryItem, BattleRecord, PraiseContent, UserConfig, PraiseTarget, PraiseStyle } from '@/types'
+import { FavoriteItem, HistoryItem, BattleRecord, PraiseContent, UserConfig, PraiseTarget, PraiseStyle, MysteryBoxState } from '@/types'
 
 const STORAGE_KEYS = {
   FAVORITES: 'kuakua_favorites',
   HISTORY: 'kuakua_history',
   BATTLES: 'kuakua_battles',
   CONFIG: 'kuakua_config',
+  MYSTERY_BOX: 'kuakua_mystery_box',
 } as const
 
 const DEFAULT_CONFIG: UserConfig = {
@@ -113,5 +114,13 @@ export const storage = {
     const config = { ...this.getConfig(), ...partial }
     safeSet(STORAGE_KEYS.CONFIG, config)
     return config
+  },
+
+  getMysteryBoxState(): MysteryBoxState | null {
+    return safeGet<MysteryBoxState | null>(STORAGE_KEYS.MYSTERY_BOX, null)
+  },
+
+  saveMysteryBoxState(state: MysteryBoxState): void {
+    safeSet(STORAGE_KEYS.MYSTERY_BOX, state)
   },
 }

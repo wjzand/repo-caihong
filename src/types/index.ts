@@ -117,3 +117,72 @@ export interface VocabularyData {
   metaphors: Record<PraiseStyle, string[]>;
   descriptions: Record<PraiseStyle, string[]>;
 }
+
+export enum MysteryBoxRarity {
+  NORMAL = 'normal',
+  RARE = 'rare',
+  HIDDEN = 'hidden',
+  EGG = 'egg',
+}
+
+export enum CardSeries {
+  GARDEN = 'garden',
+  FUNNY = 'funny',
+  ANCIENT = 'ancient',
+  DREAM = 'dream',
+  CANDY = 'candy',
+}
+
+export interface MysteryCard {
+  id: string;
+  rarity: MysteryBoxRarity;
+  series: CardSeries;
+  text: string;
+  emoji: string;
+  background: string;
+  textColor: string;
+  effect?: 'glow' | 'rainbow' | 'sparkle' | 'float';
+  title?: string;
+  sound?: string;
+}
+
+export interface PraiseTask {
+  id: string;
+  title: string;
+  description: string;
+  emoji: string;
+  type: 'share' | 'praise' | 'voice' | 'screenshot';
+  reward: 'normal_box' | 'rare_box';
+}
+
+export interface MysteryBoxState {
+  lastOpenDate: string | null;
+  dailyFreeUsed: boolean;
+  normalBoxCount: number;
+  rareBoxCount: number;
+  currentTask: PraiseTask | null;
+  taskCompleted: boolean;
+  collectedCards: string[];
+  openHistory: Array<{
+    cardId: string;
+    openedAt: number;
+    isNew: boolean;
+  }>;
+  stats: {
+    totalOpened: number;
+    hiddenCount: number;
+    taskCompleted: number;
+    sharedCount: number;
+  };
+}
+
+export interface Achievement {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  condition: string;
+  unlocked: boolean;
+  progress: number;
+  total: number;
+}
