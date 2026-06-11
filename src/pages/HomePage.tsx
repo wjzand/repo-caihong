@@ -55,29 +55,31 @@ export default function HomePage() {
           }}
         />
 
-        <div className="flex justify-center py-2">
-          <button
-            onClick={handleGenerate}
-            disabled={isGenerating}
-            className="group relative w-28 h-28 rounded-full bg-gradient-to-br from-pink-400 via-purple-400 to-blue-400 shadow-dreamy hover:shadow-float transition-all duration-300 active:scale-95 disabled:opacity-70 disabled:cursor-wait"
-          >
-            <div className="absolute inset-1 rounded-full bg-gradient-to-br from-pink-300 via-purple-300 to-blue-300 opacity-50 group-hover:opacity-70 transition-opacity animate-pulse-slow" />
-            <div className="relative z-10 flex flex-col items-center justify-center h-full text-white">
-              {isGenerating ? (
-                <div className="flex gap-1">
-                  <span className="w-2 h-2 rounded-full bg-white animate-wave" />
-                  <span className="w-2 h-2 rounded-full bg-white animate-wave-delay" />
-                  <span className="w-2 h-2 rounded-full bg-white animate-wave-delay-2" />
-                </div>
-              ) : (
-                <>
-                  <Sparkles size={32} className="mb-1 drop-shadow-lg" />
-                  <span className="text-xs font-bold tracking-wide">生成彩虹屁</span>
-                </>
-              )}
-            </div>
-            <div className="absolute -top-2 -right-2 text-2xl animate-bounce-in">🌈</div>
-          </button>
+        <div className="flex justify-center pt-4 pb-2 px-4">
+          <div className="relative">
+            <div className="absolute -top-1 -right-1 text-3xl animate-bounce-in z-10">🌈</div>
+            <button
+              onClick={handleGenerate}
+              disabled={isGenerating}
+              className="group relative w-28 h-28 rounded-full bg-gradient-to-br from-pink-400 via-purple-400 to-blue-400 shadow-dreamy hover:shadow-float transition-all duration-300 active:scale-95 disabled:opacity-70 disabled:cursor-wait"
+            >
+              <div className="absolute inset-1 rounded-full bg-gradient-to-br from-pink-300 via-purple-300 to-blue-300 opacity-50 group-hover:opacity-70 transition-opacity animate-pulse-slow" />
+              <div className="relative z-10 flex flex-col items-center justify-center h-full text-white">
+                {isGenerating ? (
+                  <div className="flex gap-1">
+                    <span className="w-2 h-2 rounded-full bg-white animate-wave" />
+                    <span className="w-2 h-2 rounded-full bg-white animate-wave-delay" />
+                    <span className="w-2 h-2 rounded-full bg-white animate-wave-delay-2" />
+                  </div>
+                ) : (
+                  <>
+                    <Sparkles size={32} className="mb-1 drop-shadow-lg" />
+                    <span className="text-xs font-bold tracking-wide">生成彩虹屁</span>
+                  </>
+                )}
+              </div>
+            </button>
+          </div>
         </div>
 
         <PraiseCard

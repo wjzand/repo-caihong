@@ -17,7 +17,7 @@ export function StyleSelector({ value, onChange, className }: StyleSelectorProps
         <span>🎨</span>
         <span>选择夸赞风格</span>
       </div>
-      <div className="flex flex-wrap gap-2.5">
+      <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide touch-pan-x">
         {styles.map(([key, config]) => {
           const isActive = value === key
           return (
@@ -25,12 +25,13 @@ export function StyleSelector({ value, onChange, className }: StyleSelectorProps
               key={key}
               onClick={() => onChange(key)}
               className={cn(
-                'inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-medium text-sm',
-                'transition-all duration-200 ease-out active:scale-95',
+                'shrink-0 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full font-medium text-sm',
+                'transition-all duration-200 ease-out active:scale-95 select-none',
                 'focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-1',
+                'touch-manipulation',
                 isActive
                   ? `bg-gradient-to-r ${config.color} text-white shadow-md`
-                  : 'bg-white/80 text-gray-600 border border-gray-100 hover:bg-white hover:border-pink-200'
+                  : 'bg-white/80 backdrop-blur-sm text-gray-600 border border-gray-100 hover:bg-white hover:border-pink-200'
               )}
             >
               <span className="text-base">{config.emoji}</span>

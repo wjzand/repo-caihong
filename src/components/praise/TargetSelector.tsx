@@ -17,7 +17,7 @@ export function TargetSelector({ value, onChange, className }: TargetSelectorPro
         <span>🎯</span>
         <span>选择夸赞对象</span>
       </div>
-      <div className="flex gap-3 overflow-x-auto pb-3 -mx-1 px-1 scrollbar-hide snap-x snap-mandatory">
+      <div className="flex gap-3 overflow-x-auto pb-3 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory touch-pan-x">
         {targets.map(([key, config]) => {
           const isActive = value === key
           return (
@@ -25,11 +25,12 @@ export function TargetSelector({ value, onChange, className }: TargetSelectorPro
               key={key}
               onClick={() => onChange(key)}
               className={cn(
-                'snap-start shrink-0 flex flex-col items-center gap-2 p-3 rounded-2xl transition-all duration-300 min-w-[80px]',
-                'focus:outline-none focus:ring-2 focus:ring-pink-300',
+                'snap-start shrink-0 flex flex-col items-center gap-2 px-4 py-3 rounded-2xl transition-all duration-300 min-w-[80px]',
+                'focus:outline-none focus:ring-2 focus:ring-pink-300 select-none',
+                'touch-manipulation active:scale-95',
                 isActive
                   ? 'bg-gradient-to-br from-pink-100 to-purple-100 shadow-soft scale-105'
-                  : 'bg-white/60 hover:bg-white hover:shadow-soft'
+                  : 'bg-white/70 backdrop-blur-sm hover:bg-white hover:shadow-soft'
               )}
             >
               <span

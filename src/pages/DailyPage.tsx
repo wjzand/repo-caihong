@@ -1,4 +1,5 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { PageContainer } from '@/components/layout/PageContainer'
 import { Button } from '@/components/ui/Button'
 import { TagSelector } from '@/components/ui/TagSelector'
@@ -30,9 +31,11 @@ function getLunarDate(): string {
 }
 
 export default function DailyPage() {
+  const navigate = useNavigate()
   const [praise, setPraise] = useState(generateDailyPraise())
   const [selectedStyle, setSelectedStyle] = useState<PraiseStyle>(praise.style)
   const { supported, speaking, play, stop } = useSpeech()
+  const cardRef = useRef<HTMLDivElement>(null)
 
   const today = useMemo(() => {
     const d = new Date()
@@ -84,6 +87,16 @@ export default function DailyPage() {
         })
       } catch {}
     }
+  }
+
+  const handleSave = async () => {
+    navigate('/poster', { 
+      state: { 
+        praiseId: praise.id, 
+        text: praise.text,
+        isDaily: true 
+      } 
+    })
   }
 
   const targetConfig = TARGET_CONFIG[praise.target]
@@ -184,7 +197,10 @@ export default function DailyPage() {
                 >
                   <Share2 size={20} className="text-blue-500" />
                 </button>
-                <button className="w-11 h-11 rounded-full bg-white shadow-soft flex items-center justify-center text-lg hover:shadow-dreamy transition-all active:scale-95">
+                <button
+                  onClick={handleSave}
+                  className="w-11 h-11 rounded-full bg-white shadow-soft flex items-center justify-center text-lg hover:shadow-dreamy transition-all active:scale-95"
+                >
                   <Download size={20} className="text-green-500" />
                 </button>
               </div>
